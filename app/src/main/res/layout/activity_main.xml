@@ -19,6 +19,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/root_navigation" />
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:background="@color/grey_2"
+        app:layout_constraintBottom_toBottomOf="@+id/root_fragments"
+        tools:layout_editor_absoluteX="@dimen/dimen_16" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_menu"
         style="@style/BottomNavigationView"
