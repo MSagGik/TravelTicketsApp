@@ -47,4 +47,6 @@
     <string name="loc">LOC</string>
     <string name="information_track">инф. о перелёте</string>
     <string name="place_holder">Страница в разработке</string>
+    <string name="no_connection">Проверьте подключение к интернету</string>
+    <string name="error">Что-то пошло не так</string>
 </resources>
