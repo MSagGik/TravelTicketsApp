@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flights_navigation"
+    app:startDestination="@id/flightsFragment">
+
+    <fragment
+        android:id="@+id/flightsFragment"
+        android:name="com.msaggik.flights.FlightsFragment"
+        android:label="fragment_flights"
+        tools:layout="@layout/fragment_flights" />
+</navigation>

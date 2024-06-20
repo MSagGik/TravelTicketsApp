@@ -1,20 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    namespace = "com.msaggik.travelticketsapp"
+    namespace = "com.msaggik.flights"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.msaggik.travelticketsapp"
         minSdk = 29
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -33,6 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         viewBinding = true
     }
@@ -58,9 +56,4 @@ dependencies {
     implementation(libs.koin)
 
     implementation(project(":common_ui"))
-    implementation(project(":flights"))
-    implementation(project(":hotels"))
-    implementation(project(":in_short"))
-    implementation(project(":profile"))
-    implementation(project(":subscriptions"))
 }
