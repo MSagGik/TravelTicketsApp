@@ -1,7 +1,7 @@
 package com.msaggik.flights.presentation.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +13,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.msaggik.common_util.Utils
 import com.msaggik.flights.databinding.FragmentFlightsBinding
 import com.msaggik.flights.domain.model.Offer
+import com.msaggik.flights.domain.model.PopularPlaces
 import com.msaggik.flights.presentation.ui.adapters.OfferAdapter
 import com.msaggik.flights.presentation.ui.adapters.PopularPlacesAdapter
 import com.msaggik.flights.presentation.view_model.OffersViewModel
+import com.msaggik.flights.presentation.view_model.PopularPlacesViewModel
 import com.msaggik.flights.presentation.view_model.state.OffersState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,24 +41,35 @@ class FlightsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        allFunOneField()
+        allFunTwoField()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+//    One field
+
+    private val offersViewModel: OffersViewModel by viewModel()
+
     private var listOffers: MutableList<Offer> = ArrayList()
 
     private val offerAdapter: OfferAdapter by lazy {
         OfferAdapter(listOffers)
     }
 
-    private val offersViewModel: OffersViewModel by viewModel()
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    private fun allFunOneField() {
         visibleFrameSearchContainer()
         viewMusicalRoute()
-        observeLiveData()
+        observeLiveDataOffers()
         configurationView()
     }
 
-//    One field
     private fun viewMusicalRoute() {
         binding.listMusicalRoute.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -92,7 +105,8 @@ class FlightsFragment : Fragment() {
         }
     }
 
-    private fun observeLiveData() {
+    @SuppressLint("NotifyDataSetChanged")
+    private fun observeLiveDataOffers() {
         offersViewModel.getStateLiveData().observe(viewLifecycleOwner) {
             listOffers.clear()
             renderOffersState(it)
@@ -118,8 +132,33 @@ class FlightsFragment : Fragment() {
 
     //    Two field
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private val popularPlacesViewModel: PopularPlacesViewModel by viewModel()
+
+    private var listPopularPlaces: MutableList<PopularPlaces> = ArrayList()
+
+    private val popularPlacesAdapter: PopularPlacesAdapter by lazy {
+        PopularPlacesAdapter(listPopularPlaces)
     }
+
+    private fun allFunTwoField() {
+        viewPopularPlaces()
+        observeLiveDataPopularPlaces()
+    }
+
+    private fun viewPopularPlaces() {
+        binding.popularPlaces.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        binding.popularPlaces.adapter = popularPlacesAdapter
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun observeLiveDataPopularPlaces() {
+        popularPlacesViewModel.getPopularPlacesLiveData().observe(viewLifecycleOwner) {
+            listPopularPlaces.clear()
+            listPopularPlaces.addAll(it)
+            popularPlacesAdapter.notifyDataSetChanged()
+        }
+    }
+
+
 }

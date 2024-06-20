@@ -269,7 +269,7 @@
             android:background="@drawable/shape_frame_three_search">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_popular_places"
+                android:id="@+id/popular_places"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
