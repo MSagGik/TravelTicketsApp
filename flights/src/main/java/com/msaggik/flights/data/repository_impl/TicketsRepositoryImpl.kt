@@ -3,7 +3,7 @@ package com.msaggik.flights.data.repository_impl
 import android.content.Context
 import com.msaggik.common_ui.R
 import com.msaggik.common_util.Resource
-import com.msaggik.common_util.Util
+import com.msaggik.common_util.Utils
 import com.msaggik.flights.data.api.network.NetworkClient
 import com.msaggik.flights.data.dto.response.entities.tickets.TicketsDto
 import com.msaggik.flights.domain.model.Ticket
@@ -23,12 +23,12 @@ class TicketsRepositoryImpl (
                         id = id,
                         arrivalAirportCode = departure.airport,
                         departureAirportCode = arrival.airport,
-                        arrivalTime = Util.getFormatDate(arrival.date),
-                        departureTime = Util.getFormatDate(departure.date),
-                        travelTime = Util.getTravelTime(arrival.date, departure.date),
+                        arrivalTime = Utils.getFormatDate(arrival.date),
+                        departureTime = Utils.getFormatDate(departure.date),
+                        travelTime = Utils.getTravelTime(arrival.date, departure.date),
                         badge = badge,
                         hasTransfer = hasTransfer,
-                        price = Util.getFormatPrice(price.value)
+                        price = Utils.getFormatPrice(price.value)
                     )
                 }
             })

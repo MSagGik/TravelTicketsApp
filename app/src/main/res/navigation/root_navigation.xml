@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/flightsFragment"
-        android:name="com.msaggik.flights.FlightsFragment"
+        android:name="com.msaggik.flights.presentation.ui.FlightsFragment"
         android:label="FlightsFragment" />
     <fragment
         android:id="@+id/hotelsFragment"

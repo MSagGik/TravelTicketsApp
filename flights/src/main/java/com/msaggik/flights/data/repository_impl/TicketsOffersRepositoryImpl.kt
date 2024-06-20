@@ -3,7 +3,7 @@ package com.msaggik.flights.data.repository_impl
 import android.content.Context
 import com.msaggik.common_ui.R
 import com.msaggik.common_util.Resource
-import com.msaggik.common_util.Util
+import com.msaggik.common_util.Utils
 import com.msaggik.flights.data.api.network.NetworkClient
 import com.msaggik.flights.data.dto.response.entities.tickets_offers.TicketsOffersDto
 import com.msaggik.flights.domain.model.TicketOffer
@@ -24,7 +24,7 @@ class TicketsOffersRepositoryImpl (
                         id = id,
                         title = title,
                         timeRange = timeRange.joinToString(" "),
-                        price = Util.getFormatPrice(price.value)
+                        price = Utils.getFormatPrice(price.value)
                     )
                 }
             })

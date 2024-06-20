@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/flightsFragment"
-        android:name="com.msaggik.flights.FlightsFragment"
+        android:name="com.msaggik.flights.presentation.ui.FlightsFragment"
         android:label="fragment_flights"
         tools:layout="@layout/fragment_flights" />
 </navigation>
