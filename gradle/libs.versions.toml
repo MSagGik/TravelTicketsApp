@@ -12,6 +12,11 @@ lifecycleLivedataKtx = "2.8.2"
 lifecycleViewmodelKtx = "2.8.2"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
+fragmentKtx = "1.8.0"
+jetpackNavigation = "2.7.7"
+retrofit = "2.11.0"
+glide = "4.16.0"
+koin = "3.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,6 +30,13 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+nav-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "jetpackNavigation" }
+nav-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "jetpackNavigation" }
+glide-core = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

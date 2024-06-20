@@ -51,4 +51,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.nav.ui)
+    implementation(libs.nav.fragment)
+    implementation(libs.koin)
+
+    implementation(project(":common_ui"))
 }
