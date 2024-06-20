@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TravelTicketsApp"
 include(":app")
- 
+include(":common_ui")

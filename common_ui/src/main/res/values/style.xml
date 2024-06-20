@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textSize">@dimen/text_size_bottom_navigation_menu</item>
+        <item name="android:backgroundTint">@color/background_black</item>
+        <item name="android:background">@color/background_black</item>
+        <item name="itemTextAppearanceActive">@style/BottomNavigationView</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationView</item>
+        <item name="itemIconTint">@color/bottom_navigation_menu_color</item>
+        <item name="itemTextColor">@color/bottom_navigation_menu_color</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemRippleColor">@null</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="menu">@menu/bottom_navigation_menu_items</item>
+    </style>
+
+    <style name="FragmentHolderStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_22s</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textColor">@color/text_header_one</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextHeaderOne">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_22s</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textColor">@color/text_header_one</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BaseEditTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_30</item>
+        <item name="android:textSize">@dimen/text_size_16s</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey_6</item>
+        <item name="android:ems">10</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="EditTextStyleText" parent="BaseEditTextStyle">
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="EditTextStyleNone" parent="BaseEditTextStyle">
+        <item name="android:inputType">none</item>
+        <item name="android:textIsSelectable">true</item>
+    </style>
+
+    <style name="BaseTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/dimen_40</item>
+        <item name="android:textSize">@dimen/text_size_14s</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center_horizontal|bottom</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center|top</item>
+    </style>
+
+    <style name="TextViewStyleOne" parent="BaseTextViewStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_16s</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:layout_gravity">top|start</item>
+        <item name="android:gravity">center_vertical|start</item>
+    </style>
+
+    <style name="TextViewStyleTwo" parent="BaseTextViewStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textColor">@color/grey_5</item>
+        <item name="android:layout_gravity">bottom|start</item>
+        <item name="android:gravity">center_vertical|start</item>
+    </style>
+
+    <style name="BaseImageViewStyle">
+        <item name="android:layout_width">@dimen/dimen_48</item>
+        <item name="android:layout_height">@dimen/dimen_48</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextViewTableOneStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/dimen_33</item>
+        <item name="android:background">@null</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/text_size_14s</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:paddingBottom">@dimen/dimen_2</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BaseTextViewTicketOneStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/dimen_17</item>
+        <item name="android:background">@null</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">@dimen/text_size_14s</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BaseTextViewTicketOneStyleItem" parent="BaseTextViewTicketOneStyle">
+        <item name="android:layout_width">@dimen/dimen_40</item>
+    </style>
+
+    <style name="TextViewTicketOneStyle" parent="BaseTextViewTicketOneStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_16</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="BaseCalendarDayStyle" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:background">@drawable/shape_frame_three</item>
+        <item name="backgroundTint">@drawable/shape_frame_three</item>
+    </style>
+
+    <style name="CalendarMonthStyle" parent="BaseCalendarDayStyle">
+        <item name="android:textColorPrimary">@color/dark_green</item>
+    </style>
+
+    <style name="CalendarDayStyle" parent="BaseCalendarDayStyle">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="CalendarWeekStyle" parent="BaseCalendarDayStyle">
+        <item name="android:textColor">@color/grey_7</item>
+    </style>
+
+</resources>
