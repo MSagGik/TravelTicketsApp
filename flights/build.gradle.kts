@@ -61,6 +61,9 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
     implementation(libs.logging.interceptor)
+    implementation(libs.room)
+    implementation(libs.runtime.room)
+    kapt(libs.processor.room)
 
     implementation(project(":common_ui"))
     implementation(project(":common_util"))

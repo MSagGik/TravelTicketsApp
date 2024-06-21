@@ -1,15 +1,22 @@
 package com.msaggik.flights.presentation.ui
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.SystemClock
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +35,8 @@ import com.msaggik.flights.presentation.view_model.PopularPlacesViewModel
 import com.msaggik.flights.presentation.view_model.state.OffersState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+private const val ARRIVAL_POINT_KEY = "ARRIVAL_POINT_KEY"
+private const val DEPARTURE_POINT_KEY = "DEPARTURE_POINT_KEY"
 class FlightsFragment : Fragment() {
 
     companion object {
@@ -167,6 +176,7 @@ class FlightsFragment : Fragment() {
     private val popularPlacesAdapter: PopularPlacesAdapter by lazy {
         PopularPlacesAdapter(listPopularPlaces) {
             binding.arrivalPointSearch.setText(it.town)
+            toNextFragment()
         }
     }
 
@@ -174,6 +184,7 @@ class FlightsFragment : Fragment() {
         viewPopularPlaces()
         observeLiveDataPopularPlaces()
         configurationViewTwoField()
+        listenerToNextFragment()
     }
 
     private fun viewPopularPlaces() {
@@ -206,6 +217,7 @@ class FlightsFragment : Fragment() {
         }
         binding.anywhere.setOnClickListener{
             binding.arrivalPointSearch.setText(activity?.getString(R.string.anywhere))
+            toNextFragment()
         }
         binding.weekend.setOnClickListener{
             onPlaceholderFragment()
@@ -245,6 +257,22 @@ class FlightsFragment : Fragment() {
         }
 
         override fun afterTextChanged(p0: Editable?) {
+
         }
+    }
+
+    private fun listenerToNextFragment() {
+        binding.arrivalPointSearch.setOnEditorActionListener { textView, id, keyEvent ->
+            toNextFragment()
+            true
+        }
+    }
+
+    private fun toNextFragment() {
+        val bundle = Bundle()
+        bundle.putString(ARRIVAL_POINT_KEY, binding.arrivalPointSearch.text.toString())
+        bundle.putString(DEPARTURE_POINT_KEY, binding.departurePointSearch.text.toString())
+        arguments = bundle
+        findNavController().navigate(com.msaggik.flights.R.id.action_flightsFragment_to_ticketOfferFragment)
     }
 }

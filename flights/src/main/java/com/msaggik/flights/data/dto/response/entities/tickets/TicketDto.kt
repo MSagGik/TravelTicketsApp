@@ -9,17 +9,17 @@ import com.msaggik.flights.data.dto.response.entities.PriceDto
 import java.io.Serializable
 
 data class TicketDto(
-    var id: Int,
-    var badge: String,
-    var price: PriceDto,
-    @SerializedName("provider_name") var providerName: String,
-    var company: String,
-    var departure: DepartureDto,
-    var arrival: ArrivalDto,
-    @SerializedName("has_transfer") var hasTransfer: Boolean,
-    @SerializedName("has_visa_transfer") var hasVisaTransfer: Boolean,
-    @SerializedName("luggage") var luggage: LuggageDto,
-    @SerializedName("hand_luggage") var handLuggage: HandLuggageDto,
-    @SerializedName("is_returnable") var isReturnable: Boolean,
-    @SerializedName("is_exchangable") var isExchangable: Boolean
+    val id: Int,
+    val badge: String,
+    val price: PriceDto,
+    @SerializedName("provider_name") val providerName: String,
+    val company: String,
+    val departure: DepartureDto,
+    val arrival: ArrivalDto,
+    @SerializedName("has_transfer") val hasTransfer: Boolean,
+    @SerializedName("has_visa_transfer") val hasVisaTransfer: Boolean,
+    @SerializedName("luggage") val luggage: LuggageDto,
+    @SerializedName("hand_luggage") val handLuggage: HandLuggageDto,
+    @SerializedName("is_returnable") val isReturnable: Boolean,
+    @SerializedName("is_exchangable") val isExchangable: Boolean
 ) : Serializable

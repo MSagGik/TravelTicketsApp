@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_flightsFragment_to_placeholderFragment"
             app:destination="@id/placeholderFragment" />
+        <action
+            android:id="@+id/action_flightsFragment_to_ticketOfferFragment"
+            app:destination="@id/ticketOfferFragment" />
     </fragment>
 
     <fragment
@@ -20,5 +23,10 @@
         android:name="com.msaggik.flights.presentation.ui.PlaceholderFragment"
         android:label="fragment_placeholder"
         tools:layout="@layout/fragment_placeholder" />
+    <fragment
+        android:id="@+id/ticketOfferFragment"
+        android:name="com.msaggik.flights.presentation.ui.TicketOfferFragment"
+        android:label="fragment_ticket_offer"
+        tools:layout="@layout/fragment_ticket_offer" />
 
 </navigation>
