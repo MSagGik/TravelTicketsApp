@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "ticket")
 data class SelectedTicketDto(
     @PrimaryKey(autoGenerate = false)
-    val id: Int,
-    val departure: String,
-    val arrival: String,
+    val id: Int?,
+    val departure: String?,
+    val arrival: String?,
     val departureTime: String?,
     val arrivalTime: String?,
     val numberPassengers: Int,
@@ -18,5 +18,5 @@ data class SelectedTicketDto(
     val arrivalAirportCode: String?,
     val departureAirportCode: String?,
     var badge: String?,
-    var price: String
+    var price: String?
 )

@@ -1,9 +1,9 @@
 package com.msaggik.flights.domain.model
 
 data class SelectedTicket(
-    val id: Int,
-    val departure: String,
-    val arrival: String,
+    val id: Int?,
+    val departure: String?,
+    val arrival: String?,
     val departureTime: String?,
     val arrivalTime: String?,
     val numberPassengers: Int,
@@ -13,5 +13,5 @@ data class SelectedTicket(
     val arrivalAirportCode: String?,
     val departureAirportCode: String?,
     var badge: String?,
-    var price: String
+    var price: String?
 )
