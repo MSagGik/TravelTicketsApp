@@ -1,5 +1,6 @@
 package com.msaggik.flights.di
 
+import com.msaggik.flights.presentation.view_model.LastDeparturePlaceViewModel
 import com.msaggik.flights.presentation.view_model.OffersViewModel
 import com.msaggik.flights.presentation.view_model.PopularPlacesViewModel
 import com.msaggik.flights.presentation.view_model.TicketsOffersViewModel
@@ -30,6 +31,12 @@ val viewModelModule = module {
     viewModel {
         TicketsViewModel(
             ticketsInteractor = get()
+        )
+    }
+
+    viewModel {
+        LastDeparturePlaceViewModel(
+            lastDeparturePlaceInteractor = get()
         )
     }
 }

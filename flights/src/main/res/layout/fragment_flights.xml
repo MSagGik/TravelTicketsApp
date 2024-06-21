@@ -169,7 +169,7 @@
                 android:layout_marginBottom="6dp"
                 android:background="@null"
                 app:srcCompat="@drawable/ic_clear"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:foreground="?attr/selectableItemBackground" />
 
         </FrameLayout>

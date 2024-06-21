@@ -11,7 +11,8 @@ import com.msaggik.flights.databinding.ItemPopularPlacesBinding
 import com.msaggik.flights.domain.model.PopularPlaces
 
 class PopularPlacesAdapter(
-    listPopularPlaces: List<PopularPlaces>
+    listPopularPlaces: List<PopularPlaces>,
+    private val placesClickListener: PlacesClickListener
 ) : RecyclerView.Adapter<PopularPlacesAdapter.PopularPlacesViewHolder>() {
 
     private var list = listPopularPlaces
@@ -23,10 +24,17 @@ class PopularPlacesAdapter(
 
     override fun onBindViewHolder(holder: PopularPlacesViewHolder, position: Int) {
         holder.bind(list[position])
+        holder.itemView.setOnClickListener {
+            placesClickListener.onPlaceClick(list[position])
+        }
     }
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    fun interface PlacesClickListener {
+        fun onPlaceClick(place: PopularPlaces)
     }
 
     class PopularPlacesViewHolder(private val binding: ItemPopularPlacesBinding): RecyclerView.ViewHolder(binding.root) {

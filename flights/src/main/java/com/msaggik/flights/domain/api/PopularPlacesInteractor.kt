@@ -7,6 +7,6 @@ interface PopularPlacesInteractor {
     fun getPopularPlaces(consumer: PopularPlacesConsumer)
 
     interface PopularPlacesConsumer {
-        fun consume(listPopularPlaces: List<PopularPlaces>?)
+        fun consume(listPopularPlaces: List<PopularPlaces>)
     }
 }

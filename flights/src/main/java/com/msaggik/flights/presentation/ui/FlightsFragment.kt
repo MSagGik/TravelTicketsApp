@@ -2,20 +2,25 @@ package com.msaggik.flights.presentation.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.msaggik.common_util.Utils
+import com.msaggik.common_ui.R
 import com.msaggik.flights.databinding.FragmentFlightsBinding
 import com.msaggik.flights.domain.model.Offer
 import com.msaggik.flights.domain.model.PopularPlaces
 import com.msaggik.flights.presentation.ui.adapters.OfferAdapter
 import com.msaggik.flights.presentation.ui.adapters.PopularPlacesAdapter
+import com.msaggik.flights.presentation.view_model.LastDeparturePlaceViewModel
 import com.msaggik.flights.presentation.view_model.OffersViewModel
 import com.msaggik.flights.presentation.view_model.PopularPlacesViewModel
 import com.msaggik.flights.presentation.view_model.state.OffersState
@@ -56,8 +61,10 @@ class FlightsFragment : Fragment() {
 //    One field
 
     private val offersViewModel: OffersViewModel by viewModel()
+    private val lastDeparturePlaceViewModel: LastDeparturePlaceViewModel by viewModel()
 
     private var listOffers: MutableList<Offer> = ArrayList()
+    private var lastDeparturePlace: String = ""
 
     private val offerAdapter: OfferAdapter by lazy {
         OfferAdapter(listOffers)
@@ -66,8 +73,9 @@ class FlightsFragment : Fragment() {
     private fun allFunOneField() {
         visibleFrameSearchContainer()
         viewMusicalRoute()
+        observeLiveDataLastDeparture()
         observeLiveDataOffers()
-        configurationView()
+        configurationViewOneField()
     }
 
     private fun viewMusicalRoute() {
@@ -85,8 +93,10 @@ class FlightsFragment : Fragment() {
             override fun onStateChanged(p0: View, p1: Int) {
                 if (p1 == BottomSheetBehavior.STATE_EXPANDED) {
                     isVisibleFrameSearchContainer = true
+                    binding.departurePoint.text = binding.departurePointSearch.text
                 } else if (p1 == BottomSheetBehavior.STATE_HIDDEN) {
                     isVisibleFrameSearchContainer = false
+                    binding.departurePointSearch.text = binding.departurePoint.text
                 }
             }
             override fun onSlide(p0: View, p1: Float) {}
@@ -96,12 +106,19 @@ class FlightsFragment : Fragment() {
         }
     }
 
-    private fun configurationView() {
+    private fun configurationViewOneField() {
         binding.arrivalPoint.setOnClickListener {
             binding.departurePointSearch.text = binding.departurePoint.text
             binding.departurePoint.clearFocus()
             Utils.closeKeyBoard(requireActivity(), binding.arrivalPoint)
             frameSearchContainer.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+    }
+
+    private fun observeLiveDataLastDeparture() {
+        lastDeparturePlaceViewModel.getLastDeparturePlaceLiveData().observe(viewLifecycleOwner) {
+            lastDeparturePlace = it
+            binding.departurePoint.setText(lastDeparturePlace)
         }
     }
 
@@ -137,12 +154,15 @@ class FlightsFragment : Fragment() {
     private var listPopularPlaces: MutableList<PopularPlaces> = ArrayList()
 
     private val popularPlacesAdapter: PopularPlacesAdapter by lazy {
-        PopularPlacesAdapter(listPopularPlaces)
+        PopularPlacesAdapter(listPopularPlaces) {
+            binding.arrivalPointSearch.setText(it.town)
+        }
     }
 
     private fun allFunTwoField() {
         viewPopularPlaces()
         observeLiveDataPopularPlaces()
+        configurationViewTwoField()
     }
 
     private fun viewPopularPlaces() {
@@ -160,5 +180,56 @@ class FlightsFragment : Fragment() {
         }
     }
 
+    private fun configurationViewTwoField() {
+        binding.departurePoint.onFocusChangeListener = onFocusChangeListener
+        binding.departurePointSearch.onFocusChangeListener = onFocusChangeListener
+        binding.arrivalPointSearch.addTextChangedListener(textWatcherArrivalListener)
+        binding.clear.setOnClickListener {
+            binding.arrivalPointSearch.text?.clear()
+            Utils.closeKeyBoard(requireActivity(), binding.arrivalPointSearch)
+            binding.arrivalPointSearch.clearFocus()
+        }
 
+        binding.difficultRoute.setOnClickListener{
+            binding.arrivalPointSearch.setText(activity?.getString(R.string.difficult_route))
+        }
+        binding.anywhere.setOnClickListener{
+            binding.arrivalPointSearch.setText(activity?.getString(R.string.anywhere))
+        }
+        binding.weekend.setOnClickListener{
+            binding.arrivalPointSearch.setText(activity?.getString(R.string.weekend))
+        }
+        binding.lastMinuteTickets.setOnClickListener{
+            binding.arrivalPointSearch.setText(activity?.getString(R.string.hot_tickets))
+        }
+    }
+
+    private val onFocusChangeListener = object : OnFocusChangeListener {
+        override fun onFocusChange(p0: View?, p1: Boolean) {
+            if(!p1) {
+                if(p0?.id == binding.departurePoint.id) {
+                    lastDeparturePlace = binding.departurePoint.text.toString()
+                } else if(p0?.id == binding.departurePointSearch.id) {
+                    lastDeparturePlace = binding.departurePointSearch.text.toString()
+                }
+                lastDeparturePlaceViewModel.setLastDeparturePlace(lastDeparturePlace)
+            }
+        }
+    }
+
+    private val textWatcherArrivalListener = object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            if (p0.isNullOrEmpty()) {
+                binding.clear.visibility = View.GONE
+            } else {
+                binding.clear.visibility = View.VISIBLE
+            }
+        }
+
+        override fun afterTextChanged(p0: Editable?) {
+        }
+    }
 }

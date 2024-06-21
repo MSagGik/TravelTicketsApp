@@ -1,10 +1,10 @@
-package com.msaggik.flights.data.api.db
+package com.msaggik.flights.data.api.mock
 
 import android.content.Context
 import com.msaggik.common_ui.R
 import com.msaggik.flights.data.dto.response.entities.popular_places.PopularPlacesDto
 
-class PopularPlacesDataBase(
+class PopularPlacesMock(
     private val context: Context
 ) {
     fun getPopularPlacesDataBase() : List<PopularPlacesDto> {

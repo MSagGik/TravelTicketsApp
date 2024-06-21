@@ -1,12 +1,17 @@
 package com.msaggik.flights.di
 
-import com.msaggik.flights.data.api.db.PopularPlacesDataBase
+import androidx.appcompat.app.AppCompatActivity
+import com.msaggik.flights.data.api.mock.PopularPlacesMock
 import com.msaggik.flights.data.api.network.NetworkClient
 import com.msaggik.flights.data.api.network.retrofit.RetrofitNetworkClient
+import com.msaggik.flights.data.api.sp.LastDeparturePlaceSp
+import com.msaggik.flights.data.api.sp.impl.LastDeparturePlaceSpImpl
+import com.msaggik.flights.data.repository_impl.LastDeparturePlaceRepositoryImpl
 import com.msaggik.flights.data.repository_impl.OffersRepositoryImpl
 import com.msaggik.flights.data.repository_impl.PopularPlacesRepositoryImpl
 import com.msaggik.flights.data.repository_impl.TicketsOffersRepositoryImpl
 import com.msaggik.flights.data.repository_impl.TicketsRepositoryImpl
+import com.msaggik.flights.domain.repository.LastDeparturePlaceRepository
 import com.msaggik.flights.domain.repository.OffersRepository
 import com.msaggik.flights.domain.repository.PopularPlacesRepository
 import com.msaggik.flights.domain.repository.TicketsOffersRepository
@@ -17,6 +22,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 private const val MOCKY_BASE_URL = "https://run.mocky.io"
+private const val LAST_DEPARTURE_PLACE_PREFERENCES = "last_departure_place_preferences"
 
 val dataModule = module {
 
@@ -48,6 +54,12 @@ val dataModule = module {
         )
     }
 
+    single<LastDeparturePlaceRepository> {
+        LastDeparturePlaceRepositoryImpl(
+            lastDeparturePlaceSp = get()
+        )
+    }
+
     // network
     single<NetworkClient> {
         RetrofitNetworkClient(
@@ -63,10 +75,22 @@ val dataModule = module {
             .build()
     }
 
-    // db
+    // mock
     single {
-        PopularPlacesDataBase(
+        PopularPlacesMock(
             androidContext()
         )
+    }
+
+    // sp
+    single<LastDeparturePlaceSp> {
+        LastDeparturePlaceSpImpl(
+            sharedPreferences = get()
+        )
+    }
+
+    single {
+        androidContext()
+            .getSharedPreferences(LAST_DEPARTURE_PLACE_PREFERENCES, AppCompatActivity.MODE_PRIVATE)
     }
 }
