@@ -9,5 +9,16 @@
         android:id="@+id/flightsFragment"
         android:name="com.msaggik.flights.presentation.ui.FlightsFragment"
         android:label="fragment_flights"
-        tools:layout="@layout/fragment_flights" />
+        tools:layout="@layout/fragment_flights" >
+        <action
+            android:id="@+id/action_flightsFragment_to_placeholderFragment"
+            app:destination="@id/placeholderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/placeholderFragment"
+        android:name="com.msaggik.flights.presentation.ui.PlaceholderFragment"
+        android:label="fragment_placeholder"
+        tools:layout="@layout/fragment_placeholder" />
+
 </navigation>

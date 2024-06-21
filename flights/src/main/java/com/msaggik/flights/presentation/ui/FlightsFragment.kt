@@ -11,10 +11,12 @@ import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.msaggik.common_util.Utils
 import com.msaggik.common_ui.R
+import com.msaggik.common_util.InputFilterCyrillic
 import com.msaggik.flights.databinding.FragmentFlightsBinding
 import com.msaggik.flights.domain.model.Offer
 import com.msaggik.flights.domain.model.PopularPlaces
@@ -32,6 +34,8 @@ class FlightsFragment : Fragment() {
         fun newInstance() = FlightsFragment()
     }
 
+    private val filter = InputFilterCyrillic()
+
     private var _binding: FragmentFlightsBinding? = null
     private val binding: FragmentFlightsBinding get() = _binding!!
 
@@ -48,7 +52,7 @@ class FlightsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setFilterKeyBoard()
         allFunOneField()
         allFunTwoField()
     }
@@ -56,6 +60,13 @@ class FlightsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setFilterKeyBoard() {
+        binding.departurePoint.filters = arrayOf(filter)
+        binding.departurePointSearch.filters = arrayOf(filter)
+        binding.arrivalPoint.filters = arrayOf(filter)
+        binding.arrivalPointSearch.filters = arrayOf(filter)
     }
 
 //    One field
@@ -191,17 +202,21 @@ class FlightsFragment : Fragment() {
         }
 
         binding.difficultRoute.setOnClickListener{
-            binding.arrivalPointSearch.setText(activity?.getString(R.string.difficult_route))
+            onPlaceholderFragment()
         }
         binding.anywhere.setOnClickListener{
             binding.arrivalPointSearch.setText(activity?.getString(R.string.anywhere))
         }
         binding.weekend.setOnClickListener{
-            binding.arrivalPointSearch.setText(activity?.getString(R.string.weekend))
+            onPlaceholderFragment()
         }
         binding.lastMinuteTickets.setOnClickListener{
-            binding.arrivalPointSearch.setText(activity?.getString(R.string.hot_tickets))
+            onPlaceholderFragment()
         }
+    }
+
+    private fun onPlaceholderFragment() {
+        findNavController().navigate(com.msaggik.flights.R.id.action_flightsFragment_to_placeholderFragment)
     }
 
     private val onFocusChangeListener = object : OnFocusChangeListener {
