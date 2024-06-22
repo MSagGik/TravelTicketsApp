@@ -16,6 +16,14 @@
         <action
             android:id="@+id/action_flightsFragment_to_ticketOfferFragment"
             app:destination="@id/ticketOfferFragment" />
+        <argument
+            android:name="departure_point"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="arrival_point"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 
     <fragment
@@ -29,13 +37,39 @@
         android:label="fragment_ticket_offer"
         tools:layout="@layout/fragment_ticket_offer" >
         <argument
-            android:name="departure"
+            android:name="departure_point"
             app:argType="string"
             app:nullable="true" />
         <argument
-            android:name="arrival"
+            android:name="arrival_point"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_ticketOfferFragment_to_ticketFragment"
+            app:destination="@id/ticketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketFragment"
+        android:name="com.msaggik.flights.presentation.ui.TicketFragment"
+        android:label="fragment_ticket"
+        tools:layout="@layout/fragment_ticket" >
+        <argument
+            android:name="departure_point"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="arrival_point"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="departure_date"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="-" />
+        <argument
+            android:name="number_of_passengers"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
 </navigation>

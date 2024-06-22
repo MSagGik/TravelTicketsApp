@@ -1,7 +1,6 @@
 package com.msaggik.common_util
 
 import android.content.Context
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -51,15 +50,26 @@ object Utils {
         closeKeyBoard?.hideSoftInputFromWindow(view.windowToken, 0)
     }
     
-    fun getFormatDay(inputYear: Int, inputMonth: Int, inputDay: Int) : Pair<String, String> {
+    fun getShortFormatDay(inputYear: Int, inputMonth: Int, inputDay: Int) : Pair<String, String> {
         var calendar = Calendar.getInstance()
         calendar.set(inputYear, inputMonth, inputDay)
-        val month = calendar.getDisplayName(
+        val monthShort = calendar.getDisplayName(
             Calendar.MONTH,
             Calendar.SHORT_FORMAT, Locale("ru")
         )?.substringBefore(".")
         val day = calendar[Calendar.DAY_OF_MONTH]
         val weekDay = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT_FORMAT, Locale("ru"))
-        return Pair("$day $month", ", $weekDay")
+        return Pair("$day $monthShort", ", $weekDay")
+    }
+
+    fun getFormatDay(inputYear: Int, inputMonth: Int, inputDay: Int) : String {
+        var calendar = Calendar.getInstance()
+        calendar.set(inputYear, inputMonth, inputDay)
+        val day = calendar[Calendar.DAY_OF_MONTH]
+        val month = calendar.getDisplayName(
+            Calendar.MONTH,
+            Calendar.LONG_FORMAT, Locale("ru")
+        )
+        return "$day $month"
     }
 }

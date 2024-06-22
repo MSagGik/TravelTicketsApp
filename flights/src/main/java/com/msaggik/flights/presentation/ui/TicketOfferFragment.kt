@@ -2,9 +2,6 @@ package com.msaggik.flights.presentation.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,36 +12,26 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.msaggik.common_util.Utils
+import com.msaggik.flights.R
 import com.msaggik.flights.databinding.FragmentTicketOfferBinding
-import com.msaggik.flights.domain.model.Offer
-import com.msaggik.flights.domain.model.SelectedTicket
 import com.msaggik.flights.domain.model.TicketOffer
-import com.msaggik.flights.presentation.ui.adapters.OfferAdapter
 import com.msaggik.flights.presentation.ui.adapters.TicketOfferAdapter
-import com.msaggik.flights.presentation.view_model.LastDeparturePlaceViewModel
-import com.msaggik.flights.presentation.view_model.TicketOfferDbViewModel
 import com.msaggik.flights.presentation.view_model.TicketsOffersViewModel
-import com.msaggik.flights.presentation.view_model.state.OffersState
 import com.msaggik.flights.presentation.view_model.state.TicketsOffersState
-import okio.Utf8
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 
-private const val ARRIVAL_POINT_KEY = "arrival"
-private const val DEPARTURE_POINT_KEY = "departure"
+private const val ARRIVAL_POINT_KEY = "arrival_point"
+private const val DEPARTURE_POINT_KEY = "departure_point"
+private const val DEPARTURE_DATE_KEY = "departure_date"
+private const val NUMBER_OF_PASSENGERS_KEY = "number_of_passengers"
+private const val NUMBER_OF_PASSENGERS_VALUE = 1
 class TicketOfferFragment : Fragment() {
 
     private var _binding: FragmentTicketOfferBinding? = null
     private val binding: FragmentTicketOfferBinding get() = _binding!!
 
-    private val arrivalReceived by lazy {
-        arguments?.getString(ARRIVAL_POINT_KEY)
-    }
-    private val departureReceived by lazy {
-        arguments?.getString(DEPARTURE_POINT_KEY)
-    }
+    private var departureDate = ""
 
     private var flagDate: Boolean = true // true - calendarArrivalDate, false - calendarDepartureDate in dateChangeListener
 
@@ -59,8 +46,7 @@ class TicketOfferFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.arrivalPoint.setText(arrivalReceived)
-        binding.departurePoint.setText(departureReceived)
+        inputData()
 
         currentDepartureDate()
         viewTicketOffer()
@@ -73,8 +59,14 @@ class TicketOfferFragment : Fragment() {
         _binding = null
     }
 
+    private fun inputData() {
+        val arrivalReceived = arguments?.getString(ARRIVAL_POINT_KEY)
+        val departureReceived = arguments?.getString(DEPARTURE_POINT_KEY)
+        binding.arrivalPoint.setText(arrivalReceived)
+        binding.departurePoint.setText(departureReceived)
+    }
+
     private val ticketsOffersViewModel: TicketsOffersViewModel by viewModel()
-    private val lastDeparturePlaceViewModel: LastDeparturePlaceViewModel by viewModel()
 
     private var lastDeparturePlace: String = ""
 
@@ -130,11 +122,22 @@ class TicketOfferFragment : Fragment() {
             lastDeparturePlace = binding.arrivalPoint.text.toString()
             binding.arrivalPoint.text = binding.departurePoint.text
             binding.departurePoint.setText(lastDeparturePlace)
-            lastDeparturePlaceViewModel.setLastDeparturePlace(lastDeparturePlace)
         }
 
         binding.button.setOnClickListener {
-            findNavController().navigateUp()
+            val bundle = Bundle()
+            val departurePoint = binding.departurePoint.text.toString()
+            val arrivalPoint = binding.arrivalPoint.text.toString()
+
+            if(departurePoint.isNotEmpty() && arrivalPoint.isNotEmpty()) {
+                bundle.putString(DEPARTURE_POINT_KEY, departurePoint)
+                bundle.putString(ARRIVAL_POINT_KEY, arrivalPoint)
+                bundle.putString(DEPARTURE_DATE_KEY, departureDate)
+                bundle.putInt(NUMBER_OF_PASSENGERS_KEY, NUMBER_OF_PASSENGERS_VALUE)
+                findNavController().navigate(R.id.action_ticketOfferFragment_to_ticketFragment, bundle)
+            } else {
+                Toast.makeText(activity, getString(com.msaggik.common_ui.R.string.validator), Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.containerArrivalDate.setOnClickListener {
@@ -152,7 +155,7 @@ class TicketOfferFragment : Fragment() {
 
     private val dateChangeListener: OnDateChangeListener = object : OnDateChangeListener {
         override fun onSelectedDayChange(p0: CalendarView, year: Int, month: Int, day: Int) {
-            val (dayMonth, weekDay) = Utils.getFormatDay(year, month, day)
+            val (dayMonth, weekDay) = Utils.getShortFormatDay(year, month, day)
             if (flagDate) {
                 binding.addDate.visibility = View.GONE
                 binding.arrivalWeekDay.visibility = View.VISIBLE
@@ -161,6 +164,7 @@ class TicketOfferFragment : Fragment() {
             } else {
                 binding.departureDate.text = dayMonth
                 binding.departureWeekDay.text = weekDay
+                departureDate = Utils.getFormatDay(year, month, day)
             }
             binding.calendarView.visibility = View.GONE
         }
@@ -173,7 +177,8 @@ class TicketOfferFragment : Fragment() {
         val currentMonth = currentTime[Calendar.MONTH]
         val currentYear = currentTime[Calendar.YEAR]
 
-        val (day, weekDay) = Utils.getFormatDay(currentYear, currentMonth, currentDay)
+        val (day, weekDay) = Utils.getShortFormatDay(currentYear, currentMonth, currentDay)
+        departureDate = Utils.getFormatDay(currentYear, currentMonth, currentDay)
 
         binding.departureDate.text = day
         binding.departureWeekDay.text = weekDay

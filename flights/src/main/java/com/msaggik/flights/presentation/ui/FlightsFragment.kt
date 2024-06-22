@@ -28,8 +28,8 @@ import com.msaggik.flights.presentation.view_model.PopularPlacesViewModel
 import com.msaggik.flights.presentation.view_model.state.OffersState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-private const val ARRIVAL_POINT_KEY = "arrival"
-private const val DEPARTURE_POINT_KEY = "departure"
+private const val ARRIVAL_POINT_KEY = "arrival_point"
+private const val DEPARTURE_POINT_KEY = "departure_point"
 class FlightsFragment : Fragment() {
 
     companion object {
@@ -260,13 +260,23 @@ class FlightsFragment : Fragment() {
             toNextFragment()
             true
         }
+        binding.departurePointSearch.setOnEditorActionListener { textView, id, keyEvent ->
+            toNextFragment()
+            true
+        }
     }
 
-    private val bundle: Bundle = Bundle()
-
     private fun toNextFragment() {
-        bundle.putString(DEPARTURE_POINT_KEY, binding.departurePointSearch.text.toString())
-        bundle.putString(ARRIVAL_POINT_KEY, binding.arrivalPointSearch.text.toString())
-        findNavController().navigate(com.msaggik.flights.R.id.action_flightsFragment_to_ticketOfferFragment, bundle)
+        val bundle = Bundle()
+        val departurePoint = binding.departurePointSearch.text.toString()
+        val arrivalPoint = binding.arrivalPointSearch.text.toString()
+
+        if(departurePoint.isNotEmpty() && arrivalPoint.isNotEmpty()) {
+            bundle.putString(DEPARTURE_POINT_KEY, departurePoint)
+            bundle.putString(ARRIVAL_POINT_KEY, arrivalPoint)
+            findNavController().navigate(com.msaggik.flights.R.id.action_flightsFragment_to_ticketOfferFragment, bundle)
+        } else {
+            Toast.makeText(activity, getString(R.string.validator), Toast.LENGTH_SHORT).show()
+        }
     }
 }

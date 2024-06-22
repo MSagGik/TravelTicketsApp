@@ -54,4 +54,5 @@
     <string name="form_time_tickets">%1$sч в пути</string>
     <string name="not_transfer">/ Без пересадок</string>
     <string name="is_transfer">/ С пересадками</string>
+    <string name="validator">Необходимо заполнить все поля</string>
 </resources>

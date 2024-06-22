@@ -138,6 +138,8 @@
                 android:background="@null"
                 android:drawableStart="@drawable/ic_fly"
                 android:drawablePadding="8dp"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 android:hint="@string/hint_departure_point" />
 
             <View

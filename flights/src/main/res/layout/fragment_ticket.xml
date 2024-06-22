@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_black"
+    tools:context=".presentation.ui.TicketFragment">
+
+    <FrameLayout
+        android:id="@+id/frame_ticket_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="100">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_48"
+            android:background="@color/grey_2"
+            android:paddingVertical="@dimen/dimen_8">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/dimen_24"
+                android:layout_height="@dimen/dimen_24"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="@dimen/dimen_2"
+                android:background="@null"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_back_blue"
+                android:foreground="?attr/selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/direction"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="top|start"
+                android:layout_marginStart="@dimen/dimen_32"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:background="@null"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto"
+                android:textFontWeight="600"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_16s"
+                android:text="@string/direction" />
+
+            <TextView
+                android:id="@+id/description_direction"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="bottom|start"
+                android:layout_marginStart="@dimen/dimen_32"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:background="@null"
+                android:textColor="@color/grey_6"
+                android:fontFamily="@font/roboto"
+                android:textFontWeight="300"
+                android:textStyle="italic"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_size_14s"
+                android:text="@string/description_direction" />
+
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_tickets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="135dp"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_marginBottom="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_48"
+            android:paddingHorizontal="@dimen/dimen_10"
+            android:background="@drawable/shape_button_blue"
+            android:layout_gravity="center_horizontal|bottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_16"
+                    android:layout_height="@dimen/dimen_16"
+                    android:background="@null"
+                    android:layout_marginEnd="@dimen/dimen_2"
+                    android:src="@drawable/ic_filters" />
+
+                <TextView
+                    style="@style/TextViewTableOneStyle"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/filter"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:paddingBottom="@dimen/dimen_2" />
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_16"
+                    android:layout_height="@dimen/dimen_16"
+                    android:layout_marginEnd="@dimen/dimen_2"
+                    android:background="@null"
+                    android:src="@drawable/ic_chart" />
+
+                <TextView
+                    style="@style/TextViewTableOneStyle"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/price_chart"
+                    android:paddingBottom="@dimen/dimen_2" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
