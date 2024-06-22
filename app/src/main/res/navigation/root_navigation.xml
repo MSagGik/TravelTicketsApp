@@ -4,6 +4,8 @@
     android:id="@+id/root_navigation"
     app:startDestination="@id/flights_navigation">
 
+    <include app:graph="@navigation/flights_navigation" />
+
     <fragment
         android:id="@+id/flightsFragment"
         android:name="com.msaggik.flights.presentation.ui.FlightsFragment"
@@ -24,7 +26,5 @@
         android:id="@+id/subscriptionsFragment"
         android:name="com.msaggik.subscriptions.SubscriptionFragment"
         android:label="SubscriptionFragment" />
-
-    <include app:graph="@navigation/flights_navigation" />
 
 </navigation>

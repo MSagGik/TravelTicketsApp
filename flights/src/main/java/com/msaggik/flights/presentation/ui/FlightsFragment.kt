@@ -32,10 +32,6 @@ private const val ARRIVAL_POINT_KEY = "arrival_point"
 private const val DEPARTURE_POINT_KEY = "departure_point"
 class FlightsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FlightsFragment()
-    }
-
     private val filter = InputFilterCyrillic()
 
     private var _binding: FragmentFlightsBinding? = null
@@ -47,7 +43,7 @@ class FlightsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFlightsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -197,9 +193,13 @@ class FlightsFragment : Fragment() {
     }
 
     private fun configurationViewTwoField() {
+
         binding.departurePoint.onFocusChangeListener = onFocusChangeListener
+
         binding.departurePointSearch.onFocusChangeListener = onFocusChangeListener
+
         binding.arrivalPointSearch.addTextChangedListener(textWatcherArrivalListener)
+
         binding.clear.setOnClickListener {
             binding.arrivalPointSearch.text?.clear()
             Utils.closeKeyBoard(requireActivity(), binding.arrivalPointSearch)

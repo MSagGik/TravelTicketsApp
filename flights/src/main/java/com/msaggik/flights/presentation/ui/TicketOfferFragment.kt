@@ -2,6 +2,8 @@ package com.msaggik.flights.presentation.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -151,6 +153,8 @@ class TicketOfferFragment : Fragment() {
         }
 
         binding.calendar.setOnDateChangeListener(dateChangeListener)
+
+        binding.arrivalPoint.addTextChangedListener(textWatcherArrivalListener)
     }
 
     private val dateChangeListener: OnDateChangeListener = object : OnDateChangeListener {
@@ -182,5 +186,27 @@ class TicketOfferFragment : Fragment() {
 
         binding.departureDate.text = day
         binding.departureWeekDay.text = weekDay
+    }
+
+    private val textWatcherArrivalListener = object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            if (p0.isNullOrEmpty()) {
+                binding.clear.visibility = View.GONE
+            } else {
+                binding.clear.visibility = View.VISIBLE
+            }
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            if (p0.isNullOrEmpty()) {
+                binding.clear.visibility = View.GONE
+            } else {
+                binding.clear.visibility = View.VISIBLE
+            }
+        }
+
+        override fun afterTextChanged(p0: Editable?) {
+
+        }
     }
 }

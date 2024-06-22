@@ -17,7 +17,6 @@
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
-        <item name="menu">@menu/bottom_navigation_menu_items</item>
     </style>
 
     <style name="FragmentHolderStyle">

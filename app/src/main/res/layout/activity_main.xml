@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_black"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -30,6 +31,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_menu"
         style="@style/BottomNavigationView"
+        app:menu="@menu/bottom_navigation_menu_items"
         android:layout_marginHorizontal="@dimen/dimen_16"
         tools:ignore="MissingConstraints" />
 

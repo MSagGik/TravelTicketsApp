@@ -15,7 +15,7 @@
             app:destination="@id/placeholderFragment" />
         <action
             android:id="@+id/action_flightsFragment_to_ticketOfferFragment"
-            app:destination="@id/ticketOfferFragment" />
+            app:destination="@id/ticketOfferFragment"/>
         <argument
             android:name="departure_point"
             app:argType="string"
@@ -46,7 +46,7 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_ticketOfferFragment_to_ticketFragment"
-            app:destination="@id/ticketFragment" />
+            app:destination="@id/ticketFragment"/>
     </fragment>
     <fragment
         android:id="@+id/ticketFragment"

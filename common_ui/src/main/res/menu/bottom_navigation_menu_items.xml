@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/flightsFragment"
-        android:title="@string/flights"
-        android:icon="@drawable/ic_flights" />
+    <item
+        android:id="@+id/flights_navigation"
+        android:icon="@drawable/ic_flights"
+        android:title="@string/flights" />
 
     <item android:id="@+id/hotelsFragment"
         android:title="@string/hotels"
