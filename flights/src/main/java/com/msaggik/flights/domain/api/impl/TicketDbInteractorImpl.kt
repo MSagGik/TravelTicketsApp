@@ -11,6 +11,15 @@ class TicketDbInteractorImpl (
 
     val executor = Executors.newCachedThreadPool()
 
+    override fun isInTableTicket(
+        id: Int,
+        consumer: TicketDbInteractor.IsTicketDbConsumer
+    ) {
+        executor.execute{
+            consumer.consume(repository.isInTableTicket(id))
+        }
+    }
+
     override fun setTicket(
         ticket: SelectedTicket,
         consumer: TicketDbInteractor.TicketDbConsumer

@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import com.msaggik.common_ui.R
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Locale
 import kotlin.math.round
 
@@ -48,5 +49,17 @@ object Utils {
     fun closeKeyBoard(context: Context, view: View) {
         val closeKeyBoard = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         closeKeyBoard?.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+    
+    fun getFormatDay(inputYear: Int, inputMonth: Int, inputDay: Int) : Pair<String, String> {
+        var calendar = Calendar.getInstance()
+        calendar.set(inputYear, inputMonth, inputDay)
+        val month = calendar.getDisplayName(
+            Calendar.MONTH,
+            Calendar.SHORT_FORMAT, Locale("ru")
+        )?.substringBefore(".")
+        val day = calendar[Calendar.DAY_OF_MONTH]
+        val weekDay = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT_FORMAT, Locale("ru"))
+        return Pair("$day $month", ", $weekDay")
     }
 }

@@ -28,8 +28,8 @@ import com.msaggik.flights.presentation.view_model.PopularPlacesViewModel
 import com.msaggik.flights.presentation.view_model.state.OffersState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-private const val ARRIVAL_POINT_KEY = "ARRIVAL_POINT_KEY"
-private const val DEPARTURE_POINT_KEY = "DEPARTURE_POINT_KEY"
+private const val ARRIVAL_POINT_KEY = "arrival"
+private const val DEPARTURE_POINT_KEY = "departure"
 class FlightsFragment : Fragment() {
 
     companion object {
@@ -112,6 +112,7 @@ class FlightsFragment : Fragment() {
                     binding.departurePointSearch.text = binding.departurePoint.text
                 }
             }
+
             override fun onSlide(p0: View, p1: Float) {}
         })
         if (isVisibleFrameSearchContainer) {
@@ -205,17 +206,17 @@ class FlightsFragment : Fragment() {
             binding.arrivalPointSearch.clearFocus()
         }
 
-        binding.difficultRoute.setOnClickListener{
+        binding.difficultRoute.setOnClickListener {
             onPlaceholderFragment()
         }
-        binding.anywhere.setOnClickListener{
+        binding.anywhere.setOnClickListener {
             binding.arrivalPointSearch.setText(activity?.getString(R.string.anywhere))
             toNextFragment()
         }
-        binding.weekend.setOnClickListener{
+        binding.weekend.setOnClickListener {
             onPlaceholderFragment()
         }
-        binding.lastMinuteTickets.setOnClickListener{
+        binding.lastMinuteTickets.setOnClickListener {
             onPlaceholderFragment()
         }
     }
@@ -226,10 +227,10 @@ class FlightsFragment : Fragment() {
 
     private val onFocusChangeListener = object : OnFocusChangeListener {
         override fun onFocusChange(p0: View?, p1: Boolean) {
-            if(!p1) {
-                if(p0?.id == binding.departurePoint.id) {
+            if (!p1) {
+                if (p0?.id == binding.departurePoint.id) {
                     lastDeparturePlace = binding.departurePoint.text.toString()
-                } else if(p0?.id == binding.departurePointSearch.id) {
+                } else if (p0?.id == binding.departurePointSearch.id) {
                     lastDeparturePlace = binding.departurePointSearch.text.toString()
                 }
                 lastDeparturePlaceViewModel.setLastDeparturePlace(lastDeparturePlace)
@@ -261,11 +262,11 @@ class FlightsFragment : Fragment() {
         }
     }
 
+    private val bundle: Bundle = Bundle()
+
     private fun toNextFragment() {
-        val bundle = Bundle()
-        bundle.putString(ARRIVAL_POINT_KEY, binding.arrivalPointSearch.text.toString())
         bundle.putString(DEPARTURE_POINT_KEY, binding.departurePointSearch.text.toString())
-        arguments = bundle
-        findNavController().navigate(com.msaggik.flights.R.id.action_flightsFragment_to_ticketOfferFragment)
+        bundle.putString(ARRIVAL_POINT_KEY, binding.arrivalPointSearch.text.toString())
+        findNavController().navigate(com.msaggik.flights.R.id.action_flightsFragment_to_ticketOfferFragment, bundle)
     }
 }

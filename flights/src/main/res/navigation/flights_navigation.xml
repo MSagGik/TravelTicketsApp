@@ -27,6 +27,15 @@
         android:id="@+id/ticketOfferFragment"
         android:name="com.msaggik.flights.presentation.ui.TicketOfferFragment"
         android:label="fragment_ticket_offer"
-        tools:layout="@layout/fragment_ticket_offer" />
+        tools:layout="@layout/fragment_ticket_offer" >
+        <argument
+            android:name="departure"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="arrival"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

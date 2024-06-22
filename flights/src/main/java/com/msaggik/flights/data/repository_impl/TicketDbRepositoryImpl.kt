@@ -9,6 +9,10 @@ class TicketDbRepositoryImpl(
     private val ticketDb: TicketDb
 ) : TicketDbRepository {
 
+    override fun isInTableTicket(id: Int): Boolean {
+        return ticketDb.isInTableTicket(id)
+    }
+
     override fun addTicket(ticket: SelectedTicket) {
         ticketDb.addTicket(
             with(ticket) {

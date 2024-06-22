@@ -108,6 +108,6 @@ val dataModule = module {
     // db
     single {
         Room.databaseBuilder(androidContext(), TicketsDataBase::class.java, NAME_DATA_BASE)
-            .allowMainThreadQueries().build().ticketDb()
+            .allowMainThreadQueries().fallbackToDestructiveMigration().build().ticketDb()
     }
 }

@@ -9,6 +9,9 @@ import com.msaggik.flights.data.dto.SelectedTicketDto
 @Dao
 interface TicketDb {
 
+    @Query("SELECT EXISTS(SELECT * FROM ticket WHERE id=:id)")
+    fun isInTableTicket(id: Int): Boolean
+
     @Insert
     fun addTicket(ticket: SelectedTicketDto)
 

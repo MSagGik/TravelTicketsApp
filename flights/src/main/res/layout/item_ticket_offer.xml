@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="61dp"
+    android:background="@null">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/dimen_24"
+        android:layout_height="@dimen/dimen_24"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:background="@null"
+        android:src="@drawable/ic_red_circle" />
+
+    <TextView
+        android:id="@+id/airline"
+        style="@style/TextViewTicketOneStyle"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="@dimen/dimen_32"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:text="@string/airline" />
+
+    <TextView
+        android:id="@+id/departure_time"
+        style="@style/TextViewTicketOneStyle"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="@dimen/dimen_32"
+        android:layout_marginBottom="13dp"
+        android:text="@string/departure_time"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/price"
+        style="@style/TextViewTicketOneStyle"
+        android:layout_width="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_marginEnd="@dimen/dimen_17"
+        android:gravity="start"
+        android:minWidth="@dimen/dimen_50"
+        android:text="@string/price"
+        android:textColor="@color/blue" />
+
+    <ImageView
+        android:layout_width="@dimen/dimen_16"
+        android:layout_height="@dimen/dimen_16"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:background="@null"
+        android:src="@drawable/ic_next" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:layout_gravity="top"
+        android:layout_marginTop="59dp"
+        android:background="@color/grey_4" />
+
+</FrameLayout>
