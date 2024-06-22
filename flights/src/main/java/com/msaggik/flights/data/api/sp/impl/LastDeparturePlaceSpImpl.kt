@@ -11,14 +11,12 @@ class LastDeparturePlaceSpImpl(
 ) : LastDeparturePlaceSp{
 
     override fun getLastDeparturePlace(): String? {
-        sharedPreferences.getString(LAST_DEPARTURE_PLACE_KEY, null)?.let { Log.e("memory_get", it) }
         return sharedPreferences.getString(LAST_DEPARTURE_PLACE_KEY, null)
     }
 
     override fun setLastDeparturePlace(departurePlace: String) {
         sharedPreferences.edit {
             putString(LAST_DEPARTURE_PLACE_KEY, departurePlace)
-            Log.e("memory_set", departurePlace)
         }
     }
 }

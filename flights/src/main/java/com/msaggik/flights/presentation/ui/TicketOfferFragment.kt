@@ -27,6 +27,8 @@ private const val ARRIVAL_POINT_KEY = "arrival_point"
 private const val DEPARTURE_POINT_KEY = "departure_point"
 private const val DEPARTURE_DATE_KEY = "departure_date"
 private const val NUMBER_OF_PASSENGERS_KEY = "number_of_passengers"
+private const val HAS_TRANSFER_KEY = "hasTransfer"
+private const val LUGGAGE_KEY = "luggage"
 private const val NUMBER_OF_PASSENGERS_VALUE = 1
 class TicketOfferFragment : Fragment() {
 
@@ -36,11 +38,13 @@ class TicketOfferFragment : Fragment() {
     private var departureDate = ""
 
     private var flagDate: Boolean = true // true - calendarArrivalDate, false - calendarDepartureDate in dateChangeListener
+    private var isTransfer = -1
+    private var isLuggage = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTicketOfferBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -136,9 +140,11 @@ class TicketOfferFragment : Fragment() {
                 bundle.putString(ARRIVAL_POINT_KEY, arrivalPoint)
                 bundle.putString(DEPARTURE_DATE_KEY, departureDate)
                 bundle.putInt(NUMBER_OF_PASSENGERS_KEY, NUMBER_OF_PASSENGERS_VALUE)
+                bundle.putInt(HAS_TRANSFER_KEY, isTransfer)
+                bundle.putInt(LUGGAGE_KEY, isLuggage)
                 findNavController().navigate(R.id.action_ticketOfferFragment_to_ticketFragment, bundle)
             } else {
-                Toast.makeText(activity, getString(com.msaggik.common_ui.R.string.validator), Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(com.msaggik.common_ui.R.string.validator_all), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -155,6 +161,28 @@ class TicketOfferFragment : Fragment() {
         binding.calendar.setOnDateChangeListener(dateChangeListener)
 
         binding.arrivalPoint.addTextChangedListener(textWatcherArrivalListener)
+
+        binding.filter.setOnClickListener {
+            binding.filterField.visibility = View.VISIBLE
+            isLuggage = 1
+            isTransfer = 1
+        }
+        binding.close.setOnClickListener {
+            binding.filterField.visibility = View.GONE
+            isLuggage = -1
+            isTransfer = -1
+        }
+        binding.accept.setOnClickListener {
+            binding.filterField.visibility = View.GONE
+        }
+
+        binding.switchTransplants.setOnCheckedChangeListener { compoundButton, b ->
+            isTransfer = if(b) 1 else 0
+        }
+
+        binding.switchLuggage.setOnCheckedChangeListener { compoundButton, b ->
+            isLuggage = if(b) 1 else 0
+        }
     }
 
     private val dateChangeListener: OnDateChangeListener = object : OnDateChangeListener {

@@ -225,7 +225,7 @@
                         android:layout_width="wrap_content"
                         android:paddingHorizontal="@dimen/dimen_4"
                         android:gravity="start|center_vertical"
-                        android:hint="@string/filters"
+                        android:hint="@string/filters_l"
                         android:paddingBottom="@dimen/dimen_2" />
 
                 </LinearLayout>
@@ -310,7 +310,7 @@
                 android:textSize="@dimen/text_size_16s"
                 android:textStyle="normal" />
 
-            <Switch
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -318,12 +318,11 @@
                 android:layout_marginEnd="@dimen/dimen_16"
                 android:checked="false"
                 android:thumb="@drawable/shape_thumb"
-                android:thumbTint="@color/white"
                 android:track="@drawable/shape_track"
-                android:trackTint="@color/grey_5"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
+                style="@style/SwitchBlue"/>
 
         </FrameLayout>
+
     </FrameLayout>
 
     <FrameLayout
@@ -340,6 +339,140 @@
             android:layout_height="wrap_content"
             android:dateTextAppearance="@style/CalendarDayStyle"
             android:weekDayTextAppearance="@style/CalendarWeekStyle" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/filter_field"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_black"
+        android:padding="@dimen/dimen_16"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@drawable/shape_filters">
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="@dimen/dimen_24"
+                android:layout_height="@dimen/dimen_24"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dimen_4"
+                android:background="@null"
+                android:src="@drawable/ic_clear" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewFilterStyle"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="36dp"
+                android:gravity="start"
+                android:text="@string/filters_h"
+                android:textStyle="normal" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="64dp"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:textFontWeight="600"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_16s"
+            android:text="@string/transplants"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="141dp"
+            android:layout_marginTop="99dp"
+            android:background="@drawable/shape_filters">
+
+            <TextView
+                android:id="@+id/transplants"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="@dimen/dimen_16"
+                android:background="@null"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto"
+                android:textFontWeight="400"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_16s"
+                android:text="@string/no_transplants"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_transplants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/dimen_16"
+                android:checked="true"
+                android:thumb="@drawable/shape_thumb"
+                android:track="@drawable/shape_track"
+                style="@style/SwitchBlue"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginTop="260dp"
+            android:background="@drawable/shape_filters">
+
+            <TextView
+                android:id="@+id/luggage"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:background="@null"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto"
+                android:textFontWeight="400"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_16s"
+                android:text="@string/with_luggage"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_luggage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:checked="true"
+                android:thumb="@drawable/shape_thumb"
+                style="@style/SwitchBlue"/>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="540dp"
+            android:paddingVertical="@dimen/dimen_17"
+            android:backgroundTint="@color/green_2"
+            android:fontFamily="@font/roboto"
+            android:textAllCaps="false"
+            android:text="@string/result"
+            android:textColor="@color/white"
+            android:textFontWeight="500"
+            android:textSize="@dimen/text_size_16s"
+            android:textStyle="italic"
+            app:cornerRadius="8dp" />
+
     </FrameLayout>
 
 </FrameLayout>

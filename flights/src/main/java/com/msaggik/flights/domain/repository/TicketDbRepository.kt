@@ -14,5 +14,7 @@ interface TicketDbRepository {
 
     fun updateTicket(ticket: SelectedTicket)
 
+    fun deleteTicket(id: Int)
+
     fun deleteTickets()
 }

@@ -70,6 +70,14 @@
             android:name="number_of_passengers"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="luggage"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="has_transfer"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 
 </navigation>

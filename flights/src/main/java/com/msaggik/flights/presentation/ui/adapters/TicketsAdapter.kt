@@ -8,7 +8,10 @@ import com.msaggik.common_ui.R
 import com.msaggik.flights.databinding.ItemTicketBinding
 import com.msaggik.flights.domain.model.Ticket
 
-class TicketsAdapter (private val listTickets: List<Ticket>) : RecyclerView.Adapter<TicketsAdapter.TicketsViewHolder>() {
+class TicketsAdapter (
+    private val listTickets: List<Ticket>,
+    private val ticketClickListener: TicketClickListener
+) : RecyclerView.Adapter<TicketsAdapter.TicketsViewHolder>() {
 
     private var list = listTickets
 
@@ -19,11 +22,18 @@ class TicketsAdapter (private val listTickets: List<Ticket>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: TicketsViewHolder, position: Int) {
         holder.bind(list[position])
+        holder.itemView.setOnClickListener {
+            ticketClickListener.onTicketClick(list[position])
+        }
     }
 
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    fun interface TicketClickListener {
+        fun onTicketClick(ticket: Ticket)
     }
 
     class TicketsViewHolder(private val binding: ItemTicketBinding): RecyclerView.ViewHolder(binding.root) {

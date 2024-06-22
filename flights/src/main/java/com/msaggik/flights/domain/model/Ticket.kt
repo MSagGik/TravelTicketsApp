@@ -9,5 +9,6 @@ data class Ticket(
     val travelTime: String,
     var badge: String?,
     val hasTransfer: Boolean,
+    val luggage: Boolean,
     var price: String,
 )

@@ -14,6 +14,8 @@ interface TicketDbInteractor {
 
     fun updateTicket(ticket: SelectedTicket, consumer: TicketDbConsumer)
 
+    fun deleteTicket(id: Int, consumer: TicketDbConsumer)
+
     fun deleteTickets(consumer: TicketsDbConsumer)
 
     interface IsTicketDbConsumer {

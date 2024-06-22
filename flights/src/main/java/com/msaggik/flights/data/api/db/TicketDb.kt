@@ -24,6 +24,9 @@ interface TicketDb {
     @Update
     fun updateTicket(ticket: SelectedTicketDto)
 
+    @Query("DELETE FROM ticket WHERE id=:id")
+    fun deleteTicket(id: Int)
+
     @Query("DELETE FROM ticket")
     fun deleteTickets()
 }

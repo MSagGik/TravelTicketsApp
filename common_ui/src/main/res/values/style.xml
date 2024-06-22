@@ -135,6 +135,20 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="TextViewFilterStyle">
+        <item name="android:background">@null</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">@dimen/text_size_20s</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="SwitchBlue" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/switch_thumb</item>
+        <item name="trackTint">@color/switch_track</item>
+        <item name="background">@null</item>
+    </style>
+
     <style name="BaseCalendarDayStyle" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/roboto</item>
@@ -154,4 +168,5 @@
         <item name="android:textColor">@color/grey_7</item>
     </style>
 
+    <dimen name="text_size_20s">20sp</dimen>
 </resources>

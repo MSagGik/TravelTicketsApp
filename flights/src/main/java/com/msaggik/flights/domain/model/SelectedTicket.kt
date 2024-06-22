@@ -1,7 +1,9 @@
 package com.msaggik.flights.domain.model
 
+
 data class SelectedTicket(
-    val id: Int,
+    val id: Int? = -1,
+    val idServer: Int,
     val departure: String? = "",
     val arrival: String? = "",
     val departureTime: String? = "",

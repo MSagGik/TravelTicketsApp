@@ -27,6 +27,7 @@ class TicketsRepositoryImpl (
                         departureTime = Utils.getFormatDate(departure.date),
                         travelTime = Utils.getTravelTime(arrival.date, departure.date),
                         badge = badge,
+                        luggage = luggage.hasLuggage,
                         hasTransfer = hasTransfer,
                         price = Utils.getFormatPrice(price.value)
                     )

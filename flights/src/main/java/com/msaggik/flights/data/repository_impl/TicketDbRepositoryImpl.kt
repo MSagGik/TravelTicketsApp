@@ -17,7 +17,7 @@ class TicketDbRepositoryImpl(
         ticketDb.addTicket(
             with(ticket) {
                 SelectedTicketDto(
-                    id = id,
+                    idServer = idServer,
                     departure = departure,
                     arrival = arrival,
                     departureTime = departureTime,
@@ -39,6 +39,7 @@ class TicketDbRepositoryImpl(
         return with(ticketDb.getTicket(id)) {
             SelectedTicket(
                 id = id,
+                idServer = idServer,
                 departure = departure,
                 arrival = arrival,
                 departureTime = departureTime,
@@ -60,6 +61,7 @@ class TicketDbRepositoryImpl(
             with(it) {
                 SelectedTicket(
                     id = id,
+                    idServer = idServer,
                     departure = departure,
                     arrival = arrival,
                     departureTime = departureTime,
@@ -78,25 +80,29 @@ class TicketDbRepositoryImpl(
     }
 
     override fun updateTicket(ticket: SelectedTicket) {
-        ticketDb.updateTicket(
-            with(ticket) {
-                SelectedTicketDto(
-                    id = id,
-                    departure = departure,
-                    arrival = arrival,
-                    departureTime = departureTime,
-                    arrivalTime = arrivalTime,
-                    numberPassengers = numberPassengers,
-                    providerName = providerName,
-                    company = company,
-                    hasTransfer = hasTransfer,
-                    arrivalAirportCode = arrivalAirportCode,
-                    departureAirportCode = departureAirportCode,
-                    badge = badge,
-                    price = price
-                )
-            }
-        )
+        val selectedTicketDto: SelectedTicketDto = with(ticket) {
+            SelectedTicketDto(
+                idServer = idServer,
+                departure = departure,
+                arrival = arrival,
+                departureTime = departureTime,
+                arrivalTime = arrivalTime,
+                numberPassengers = numberPassengers,
+                providerName = providerName,
+                company = company,
+                hasTransfer = hasTransfer,
+                arrivalAirportCode = arrivalAirportCode,
+                departureAirportCode = departureAirportCode,
+                badge = badge,
+                price = price,
+            )
+        }
+        selectedTicketDto.id = ticket.id
+        ticketDb.updateTicket(selectedTicketDto)
+    }
+
+    override fun deleteTicket(id: Int) {
+        ticketDb.deleteTicket(id)
     }
 
     override fun deleteTickets() {

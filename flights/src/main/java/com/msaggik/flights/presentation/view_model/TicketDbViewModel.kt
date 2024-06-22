@@ -9,7 +9,7 @@ import com.msaggik.flights.domain.model.SelectedTicket
 
 private const val DEFAULT_ID_SEALED_TICKED = 1
 
-class TicketOfferDbViewModel(
+class TicketDbViewModel(
     private val ticketDbInteractor: TicketDbInteractor
 ) : ViewModel() {
 

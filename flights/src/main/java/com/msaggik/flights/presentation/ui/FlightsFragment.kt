@@ -121,7 +121,11 @@ class FlightsFragment : Fragment() {
             binding.departurePointSearch.text = binding.departurePoint.text
             binding.departurePoint.clearFocus()
             Utils.closeKeyBoard(requireActivity(), binding.arrivalPoint)
-            frameSearchContainer.state = BottomSheetBehavior.STATE_EXPANDED
+            if(binding.departurePoint.text.toString().isNotEmpty()) {
+                frameSearchContainer.state = BottomSheetBehavior.STATE_EXPANDED
+            } else {
+                Toast.makeText(activity, getString(R.string.validator_from), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -276,7 +280,7 @@ class FlightsFragment : Fragment() {
             bundle.putString(ARRIVAL_POINT_KEY, arrivalPoint)
             findNavController().navigate(com.msaggik.flights.R.id.action_flightsFragment_to_ticketOfferFragment, bundle)
         } else {
-            Toast.makeText(activity, getString(R.string.validator), Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getString(R.string.validator_all), Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -53,6 +53,13 @@ class TicketDbInteractorImpl (
         repository.updateTicket(ticket)
     }
 
+    override fun deleteTicket(
+        id: Int,
+        consumer: TicketDbInteractor.TicketDbConsumer
+    ) {
+        repository.deleteTicket(id)
+    }
+
     override fun deleteTickets(
         consumer: TicketDbInteractor.TicketsDbConsumer
     ) {

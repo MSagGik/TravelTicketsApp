@@ -31,7 +31,7 @@
     <string name="example_day_week">, сб</string>
     <string name="example_number_passenger">1, эконом</string>
     <string name="filter">Фильтр</string>
-    <string name="filters">фильтры</string>
+    <string name="filters_l">фильтры</string>
     <string name="direct_flights">Прямые рейсы</string>
     <string name="airline">Авиакомпания</string>
     <string name="departure_time">Время отправления</string>
@@ -55,5 +55,12 @@
     <string name="number_of_passengers">%1$s, %2$d пассажир</string>
     <string name="not_transfer">/ Без пересадок</string>
     <string name="is_transfer">/ С пересадками</string>
-    <string name="validator">Необходимо заполнить все поля</string>
+    <string name="validator_from">Необходимо заполнить место вылета</string>
+    <string name="validator_all">Необходимо заполнить все поля</string>
+    <string name="transplants">Пересадки</string>
+    <string name="filters_h">Фильтры</string>
+    <string name="no_transplants">Без пересадок</string>
+    <string name="with_luggage">Только с багажом</string>
+    <string name="result">Готово</string>
+    <string name="message_add_db">Билет добавлен в избранное</string>
 </resources>

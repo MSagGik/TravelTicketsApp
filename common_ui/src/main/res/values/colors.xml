@@ -14,7 +14,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#FF2261BC</color>
     <color name="dark_blue">#FF00427D</color>
-    <color name="green">#FF4CB24E</color>
+    <color name="green_1">#FF4CB24E</color>
+    <color name="green_2">#FF3A633B</color>
     <color name="dark_green">#FF015905</color>
     <color name="red">#FFFF0000</color>
     <color name="orange">#FFF36E36</color>
