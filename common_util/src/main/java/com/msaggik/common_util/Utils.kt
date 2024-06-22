@@ -27,7 +27,7 @@ object Utils {
     }
 
     fun getFormatDate(date: String): String {
-        return date.substringAfter("\'T\'").substringBeforeLast(":")
+        return date.substringAfter('T').substringBeforeLast(":")
     }
 
     fun getTravelTime(arrival: String, departure: String): String {

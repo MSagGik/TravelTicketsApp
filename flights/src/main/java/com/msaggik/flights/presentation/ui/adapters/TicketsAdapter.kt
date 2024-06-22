@@ -37,7 +37,7 @@ class TicketsAdapter (private val listTickets: List<Ticket>) : RecyclerView.Adap
             binding.timeFinish.text = model.arrivalTime
             binding.airportStart.text = model.departureAirportCode
             binding.airportFinish.text = model.arrivalAirportCode
-            binding.informationTrack.text = itemView.resources.getString(R.string.form_time_tickets, model.price)
+            binding.informationTrack.text = itemView.resources.getString(R.string.form_time_tickets, model.travelTime)
             if(model.hasTransfer) {
                 binding.informationTrack.append(itemView.resources.getString(R.string.is_transfer))
             } else {
