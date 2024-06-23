@@ -19,14 +19,14 @@
         android:id="@+id/town"
         style="@style/TextViewStyleOne"
         android:layout_marginStart="@dimen/dimen_48"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="7dp"
         android:text="@string/istanbul_city" />
 
     <TextView
         android:id="@+id/description"
         style="@style/TextViewStyleTwo"
         android:layout_marginStart="@dimen/dimen_48"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="7dp"
         android:text="@string/popular_destination" />
 
     <View

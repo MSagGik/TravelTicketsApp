@@ -25,7 +25,7 @@
         style="@style/TextViewTicketOneStyle"
         android:layout_gravity="bottom|start"
         android:layout_marginStart="@dimen/dimen_32"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="12dp"
         android:text="@string/departure_time"
         android:textStyle="normal" />
 
