@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_black"
+    tools:context=".presentation.ui.PlaceholderFragment">
+
+    <TextView
+        style="@style/FragmentHolderStyle"
+        android:layout_marginBottom="@dimen/dimen_34"
+        android:text="@string/place_holder_in_short" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_34"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingHorizontal="@dimen/dimen_32"
+        android:text="@string/back"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16s" />
+
+</FrameLayout>

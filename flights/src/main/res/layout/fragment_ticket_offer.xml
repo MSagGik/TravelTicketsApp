@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_black"
+    tools:context=".presentation.ui.TicketOfferFragment">
+
+    <!--    android:alpha="0"-->
+    <FrameLayout
+        android:id="@+id/frame_carrier_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="100">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_96"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_79"
+            android:background="@drawable/shape_frame_three_search"
+            android:paddingHorizontal="@dimen/dimen_16"
+            android:paddingVertical="@dimen/dimen_10">
+
+            <EditText
+                android:id="@+id/departure_point"
+                style="@style/BaseEditTextStyle"
+                android:layout_gravity="top|end"
+                android:layout_marginStart="@dimen/dimen_40"
+                android:background="@null"
+                android:inputType="text"
+                android:drawablePadding="@dimen/dimen_8"
+                android:hint="@string/hint_departure_point" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginStart="@dimen/dimen_40"
+                android:layout_marginBottom="@dimen/dimen_2"
+                android:background="@color/grey_4" />
+
+            <EditText
+                android:id="@+id/arrival_point"
+                style="@style/BaseEditTextStyle"
+                android:layout_gravity="bottom|end"
+                android:layout_marginStart="@dimen/dimen_40"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:background="@null"
+                android:inputType="text"
+                android:drawablePadding="@dimen/dimen_8"
+                android:drawableTint="@color/white"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:hint="@string/hint_arrival_point" />
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/dimen_24"
+                android:layout_height="@dimen/dimen_24"
+                android:layout_gravity="start|center_vertical"
+                android:background="@null"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_back"
+                android:foreground="?attr/selectableItemBackground" />
+
+            <ImageView
+                android:id="@+id/reverse"
+                android:layout_width="@dimen/dimen_24"
+                android:layout_height="@dimen/dimen_24"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="@dimen/dimen_6"
+                android:background="@null"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_reverse"
+                android:foreground="?attr/selectableItemBackground" />
+
+            <ImageView
+                android:id="@+id/clear"
+                android:layout_width="@dimen/dimen_24"
+                android:layout_height="@dimen/dimen_24"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="@dimen/dimen_6"
+                android:background="@null"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_clear"
+                android:foreground="?attr/selectableItemBackground" />
+
+        </FrameLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_33"
+            android:layout_marginTop="@dimen/dimen_188">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_33"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dimen_16">
+
+                <LinearLayout
+                    android:id="@+id/container_arrival_date"
+                    android:layout_width="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_16"
+                    android:layout_height="@dimen/dimen_33"
+                    android:layout_marginEnd="@dimen/dimen_9"
+                    android:background="@drawable/shape_table_info_one"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/add_date"
+                        android:layout_width="@dimen/dimen_16"
+                        android:layout_height="@dimen/dimen_16"
+                        android:background="@null"
+                        android:layout_marginEnd="@dimen/dimen_8"
+                        android:src="@drawable/ic_add"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/arrival_date"
+                        style="@style/TextViewTableOneStyle"
+                        android:layout_gravity="center"
+                        android:includeFontPadding="true"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/back_date"
+                        android:paddingBottom="@dimen/dimen_2" />
+
+                    <TextView
+                        android:id="@+id/arrival_week_day"
+                        style="@style/TextViewTableOneStyle"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/example_day_week"
+                        android:paddingBottom="@dimen/dimen_2"
+                        android:textColor="@color/grey_6"
+                        android:textColorHint="@color/grey_6"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/container_departure_date"
+                    android:layout_width="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_16"
+                    android:layout_height="@dimen/dimen_33"
+                    android:layout_marginEnd="@dimen/dimen_9"
+                    android:background="@drawable/shape_table_info_one"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <TextView
+                        android:id="@+id/departure_date"
+                        style="@style/TextViewTableOneStyle"
+                        android:gravity="center"
+                        android:hint="@string/example_date"
+                        android:includeFontPadding="true"
+                        android:paddingBottom="@dimen/dimen_2" />
+
+                    <TextView
+                        android:id="@+id/departure_week_day"
+                        style="@style/TextViewTableOneStyle"
+                        android:gravity="center_vertical|start"
+                        android:hint="@string/example_day_week"
+                        android:paddingBottom="@dimen/dimen_2"
+                        android:includeFontPadding="true"
+                        android:textColor="@color/grey_6"
+                        android:textColorHint="@color/grey_6" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/namber_passager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_33"
+                    android:layout_marginEnd="@dimen/dimen_9"
+                    android:background="@drawable/shape_table_info_one"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/dimen_16">
+
+                    <ImageView
+                        android:id="@+id/number_of_passengers"
+                        android:layout_width="@dimen/dimen_16"
+                        android:layout_height="@dimen/dimen_16"
+                        android:layout_marginEnd="@dimen/dimen_4"
+                        android:background="@null"
+                        android:src="@drawable/ic_passenger"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        style="@style/TextViewTableOneStyle"
+                        android:gravity="center"
+                        android:hint="@string/example_number_passenger"
+                        android:paddingBottom="@dimen/dimen_2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/filter"
+                    android:layout_width="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_16"
+                    android:layout_height="@dimen/dimen_33"
+                    android:layout_marginEnd="@dimen/dimen_9"
+                    android:background="@drawable/shape_table_info_one"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/image_filter"
+                        android:layout_width="@dimen/dimen_16"
+                        android:layout_height="@dimen/dimen_16"
+                        android:layout_marginEnd="@dimen/dimen_4"
+                        android:background="@null"
+                        android:src="@drawable/ic_filters"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        style="@style/TextViewTableOneStyle"
+                        android:layout_width="wrap_content"
+                        android:paddingHorizontal="@dimen/dimen_4"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/filters_l"
+                        android:paddingBottom="@dimen/dimen_2" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="288dp"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="233dp"
+            android:background="@drawable/shape_frame_short_list_tickets"
+            android:padding="@dimen/dimen_16">
+
+            <TextView
+                style="@style/TextHeaderOne"
+                android:layout_gravity="start"
+                android:background="@null"
+                android:text="@string/direct_flights"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_20s" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ticket_offers"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginTop="@dimen/dimen_30"
+                android:background="@null"
+                tools:listitem="@layout/item_ticket_offer"/>
+
+            <TextView
+                style="@style/BaseTextViewTicketOneStyle"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="@string/show_all"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/text_size_16s"
+                android:fontFamily="@font/roboto_medium" />
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="540dp"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/roboto_italic"
+            android:textAllCaps="false"
+            android:text="@string/show_all_tickets"
+            android:textColor="@color/white"
+            android:textFontWeight="500"
+            android:textSize="@dimen/text_size_16s"
+            app:cornerRadius="8dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="610dp"
+            android:background="@drawable/shape_subscription">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_24"
+                android:layout_height="@dimen/dimen_24"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:background="@null"
+                android:src="@drawable/ic_bell" />
+
+            <TextView
+                style="@style/TextViewTicketOneStyle"
+                android:layout_height="21dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="44dp"
+                android:gravity="start"
+                android:text="@string/subscription_price"
+                android:textSize="@dimen/text_size_16s"
+                android:fontFamily="@font/roboto_regular" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:checked="false"
+                android:thumb="@drawable/shape_thumb"
+                android:track="@drawable/shape_track"
+                style="@style/SwitchBlue"/>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/calendar_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dimen_8"
+        android:background="@drawable/shape_calendar"
+        android:layout_gravity="center"
+        android:visibility="gone">
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dateTextAppearance="@style/CalendarDayStyle"
+            android:weekDayTextAppearance="@style/CalendarWeekStyle" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/filter_field"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_black"
+        android:padding="@dimen/dimen_16"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@drawable/shape_filters">
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="@dimen/dimen_24"
+                android:layout_height="@dimen/dimen_24"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dimen_4"
+                android:background="@null"
+                android:src="@drawable/ic_clear" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewFilterStyle"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="36dp"
+                android:gravity="start"
+                android:text="@string/filters_h"
+                android:textStyle="normal" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="64dp"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            android:textFontWeight="600"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_16s"
+            android:text="@string/transplants"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="141dp"
+            android:layout_marginTop="99dp"
+            android:background="@drawable/shape_filters">
+
+            <TextView
+                android:id="@+id/transplants"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="@dimen/dimen_16"
+                android:background="@null"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_regular"
+                android:textFontWeight="400"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_16s"
+                android:text="@string/no_transplants"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_transplants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/dimen_16"
+                android:checked="true"
+                android:thumb="@drawable/shape_thumb"
+                android:track="@drawable/shape_track"
+                style="@style/SwitchBlue"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginTop="260dp"
+            android:background="@drawable/shape_filters">
+
+            <TextView
+                android:id="@+id/luggage"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:background="@null"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_regular"
+                android:textFontWeight="400"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_16s"
+                android:text="@string/with_luggage"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_luggage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:checked="true"
+                android:thumb="@drawable/shape_thumb"
+                style="@style/SwitchBlue"/>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="540dp"
+            android:paddingVertical="@dimen/dimen_17"
+            android:backgroundTint="@color/green_2"
+            android:fontFamily="@font/roboto_regular"
+            android:textAllCaps="false"
+            android:text="@string/result"
+            android:textColor="@color/white"
+            android:textFontWeight="500"
+            android:textSize="@dimen/text_size_16s"
+            android:textStyle="italic"
+            app:cornerRadius="8dp" />
+
+    </FrameLayout>
+
+</FrameLayout>

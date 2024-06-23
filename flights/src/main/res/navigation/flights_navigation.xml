@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flights_navigation"
+    app:startDestination="@id/flightsFragment">
+
+    <fragment
+        android:id="@+id/flightsFragment"
+        android:name="com.msaggik.flights.presentation.ui.FlightsFragment"
+        android:label="fragment_flights"
+        tools:layout="@layout/fragment_flights" >
+        <action
+            android:id="@+id/action_flightsFragment_to_placeholderFragment"
+            app:destination="@id/placeholderFragment" />
+        <action
+            android:id="@+id/action_flightsFragment_to_ticketOfferFragment"
+            app:destination="@id/ticketOfferFragment"/>
+        <argument
+            android:name="departure_point"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="arrival_point"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/placeholderFragment"
+        android:name="com.msaggik.flights.presentation.ui.PlaceholderFragment"
+        android:label="fragment_placeholder"
+        tools:layout="@layout/fragment_placeholder" />
+    <fragment
+        android:id="@+id/ticketOfferFragment"
+        android:name="com.msaggik.flights.presentation.ui.TicketOfferFragment"
+        android:label="fragment_ticket_offer"
+        tools:layout="@layout/fragment_ticket_offer" >
+        <argument
+            android:name="departure_point"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="arrival_point"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_ticketOfferFragment_to_ticketFragment"
+            app:destination="@id/ticketFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/ticketFragment"
+        android:name="com.msaggik.flights.presentation.ui.TicketFragment"
+        android:label="fragment_ticket"
+        tools:layout="@layout/fragment_ticket" >
+        <argument
+            android:name="departure_point"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="arrival_point"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="departure_date"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="-" />
+        <argument
+            android:name="number_of_passengers"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="luggage"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="has_transfer"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+
+</navigation>

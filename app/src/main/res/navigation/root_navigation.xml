@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_navigation"
+    app:startDestination="@id/flights_navigation">
+
+    <include app:graph="@navigation/flights_navigation" />
+
+    <fragment
+        android:id="@+id/flightsFragment"
+        android:name="com.msaggik.flights.presentation.ui.FlightsFragment"
+        android:label="FlightsFragment" />
+    <fragment
+        android:id="@+id/hotelsFragment"
+        android:name="com.msaggik.hotels.HotelsFragment"
+        android:label="HotelsFragment" />
+    <fragment
+        android:id="@+id/inShortFragment"
+        android:name="com.msaggik.in_short.InShortFragment"
+        android:label="InShortFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.msaggik.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/subscriptionsFragment"
+        android:name="com.msaggik.subscriptions.SubscriptionFragment"
+        android:label="SubscriptionFragment" />
+
+</navigation>
